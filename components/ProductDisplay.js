@@ -1,4 +1,11 @@
-app.component('product-display', {
+app.component("product-display", {
+    props: {
+        premium: {
+            type: Boolean,
+            required: true
+        }
+    },
+
     template:
         `<div class="product-display">
     <div class="product-container">
