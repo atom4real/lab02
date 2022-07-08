@@ -19,6 +19,7 @@ app.component("product-display", {
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">In Stock</p>
             <p v-else>Out of Stock</p>
+            <p>Shipping: {{ shipping }}</p>
             <ul>
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
@@ -27,14 +28,14 @@ app.component("product-display", {
               @mouseover="updateVariant(index)"
                class="color-circle"
                :style="{backgroundColor: variant.color}">
-               </div>
+            </div>
             <button
              class=" button " 
              :disabled="!inStock" 
              :class="{disabledButton: !inStock}" 
              @click="addToCart ">
              Add to Cart
-             </button>
+            </button>
         </div>
     </div>
 </div>`,
@@ -79,6 +80,12 @@ app.component("product-display", {
         },
         onSale() {
             return this.brand + ' ' + this.product + ' is on sale' 
+        },
+        shipping() {
+            if(this.premium) {
+                return 'Free'
+            }
+            return 30
         }
     }
 })
