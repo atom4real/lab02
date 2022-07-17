@@ -39,6 +39,8 @@ app.component ('product-display',{
                 </button>
             </div>
         </div>
+        <review-list  v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submited="addReview"></review-form>
     </div>`,
     data() {
         return {
@@ -52,6 +54,7 @@ app.component ('product-display',{
             ],
             activeClass: true,
             selectedVariant:0,
+            reviews:[]
         }
     },
      methods: {
@@ -66,6 +69,9 @@ app.component ('product-display',{
         },
         removeFromCart() {
             this.$emit('remove-from-cart')
+        },
+        addReview(review) {
+            this.reviews.push(review)
         }
     },
     computed: {
