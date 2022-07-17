@@ -15,7 +15,8 @@ const app = Vue.createApp({
             // ],
             // selectedVariant: 0,
             cart: 0,
-            premium: true
+            premium: true,
+            cart: []
 
         }
     },
@@ -28,6 +29,9 @@ const app = Vue.createApp({
         },
         updateVariant(index) {
             this.selectedVariant = index
+        },
+        updateCart(id) {
+            this.cart.push(id);
         }
     },
     computed: {
